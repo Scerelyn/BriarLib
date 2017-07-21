@@ -64,5 +64,22 @@ namespace Briar
         {
             return IsPossiblyPrime((long)num); //call the long overload
         }
+
+        /// <summary>
+        /// Gives a random number from 1 to number, or number to -1 if the number is negative
+        /// </summary>
+        /// <param name="num">The upper bound if positive, or lower bound if negative. Zero will just return zero</param>
+        /// <returns>Returns a random integer from one to the given integer. If the integer is negative, returns a random integer from the given integer to -1</returns>
+        public static int Random(this int num)
+        {
+            Random r = new Random();
+            if (num > 1) {
+                return r.Next(1, num + 1);
+            }
+            else
+            {
+                return r.Next(num, 0);
+            }
+        }
     }
 }

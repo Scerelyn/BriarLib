@@ -14,3 +14,4 @@ A collection useful of C# extension methods
 ### For numbers
 ##### Dice rolling - DiceRoll()
 ##### Checking for possibly primality - IsPossiblyPrime()
+##### Quick Random numbers - Random()
