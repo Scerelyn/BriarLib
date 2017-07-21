@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Briar
@@ -71,6 +72,28 @@ namespace Briar
         }
 
         /// <summary>
+        /// Counts the consonants of a given string
+        /// </summary>
+        /// <param name="stringy">The string to count on</param>
+        /// <returns>The consonant count</returns>
+        public static int CountConsonants(this string stringy)
+        {
+            int consonantCount = 0;
+            foreach (char c in stringy.ToLower())
+            {
+                switch (c)
+                { //couldn't do length - vowelcount because non alphabetical characters exist
+                    case 'b': case 'c': case 'd': case 'f': case 'g': case 'h': case 'j': case 'k':
+                    case 'l': case 'm': case 'n': case 'p': case 'q': case 'r': case 's': case 't':
+                    case 'v': case 'w': case 'x': case 'y': case 'z':
+                        consonantCount++;
+                        break;
+                }
+            }
+            return consonantCount;
+        }
+
+        /// <summary>
         /// Checks to see if a given string is a palindrome
         /// </summary>
         /// <param name="stringythingy">The string to check</param>
@@ -84,6 +107,39 @@ namespace Briar
             String reversedString = new String(reversed);
 
             return reversedString.Equals(almostTheOriginal);
+        }
+
+        /// <summary>
+        /// Wipes all instances of a given substring in a string
+        /// </summary>
+        /// <param name="current">The string to wipe from</param>
+        /// <param name="toRemove">The substring to remove from the string</param>
+        /// <returns>A copy of the string with the given string removed</returns>
+        public static string Wipe(this string current, string toRemove)
+        {
+            if (toRemove == null)
+            {
+                throw new NullReferenceException("toRemove cannot be null");
+            }
+            string replaced = Regex.Replace(current, toRemove, "");
+            return replaced;
+        }
+
+        /// <summary>
+        /// Replaces all instances of a a given substring in a string with a replacement substring
+        /// </summary>
+        /// <param name="current">The calling string to insert replacements into</param>
+        /// <param name="toReplace">The substring to replace. Cannot be null</param>
+        /// <param name="replacement">The substring to replace with. null will replace instances with an empty string</param>
+        /// <returns>A copy of the string with replaced substrings </returns>
+        public static string ReplaceSubString(this string current, string toReplace, string replacement)
+        {
+            if (toReplace == null)
+            {
+                throw new NullReferenceException("toReplace cannot be null");
+            }
+            string replaced = Regex.Replace(current, toReplace, replacement??""); //null replacement will just act the same as Wipe()
+            return replaced;
         }
     }
 }
