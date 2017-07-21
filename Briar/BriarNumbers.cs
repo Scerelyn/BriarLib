@@ -34,5 +34,35 @@ namespace Briar
             }
             return results;
         }
+
+        /// <summary>
+        /// Determines if the long is possibly prime
+        /// </summary>
+        /// <param name="num">The long to check primality on</param>
+        /// <returns>True if the long is probably prime, false if it is not</returns>
+        public static bool IsPossiblyPrime(this long num)
+        {
+            bool isPrime;
+            if (num == 2)
+            {
+                isPrime=  true;
+            }
+            else
+            {
+                isPrime = (long)Math.Pow(2, num-1) % num == 1;
+            }
+
+            return isPrime;
+        }
+
+        /// <summary>
+        /// Determines if the integer is possibly prime
+        /// </summary>
+        /// <param name="num">The integer to check primality on</param>
+        /// <returns>True if the integer is probably prime, false if it is not</returns>
+        public static bool IsPossiblyPrime(this int num)
+        {
+            return IsPossiblyPrime((long)num); //call the long overload
+        }
     }
 }
