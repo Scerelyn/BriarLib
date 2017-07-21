@@ -124,22 +124,5 @@ namespace Briar
             string replaced = Regex.Replace(current, toRemove, "");
             return replaced;
         }
-
-        /// <summary>
-        /// Replaces all instances of a a given substring in a string with a replacement substring
-        /// </summary>
-        /// <param name="current">The calling string to insert replacements into</param>
-        /// <param name="toReplace">The substring to replace. Cannot be null</param>
-        /// <param name="replacement">The substring to replace with. null will replace instances with an empty string</param>
-        /// <returns>A copy of the string with replaced substrings </returns>
-        public static string ReplaceSubString(this string current, string toReplace, string replacement)
-        {
-            if (toReplace == null)
-            {
-                throw new NullReferenceException("toReplace cannot be null");
-            }
-            string replaced = Regex.Replace(current, toReplace, replacement??""); //null replacement will just act the same as Wipe()
-            return replaced;
-        }
     }
 }
