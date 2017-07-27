@@ -6,6 +6,7 @@ A collection useful of C# extension methods
 ##### Palindrome checking - IsPalindrome()
 ##### Counting vowels and consonants (english) - CountVowels(), CountConsonants
 ##### Remove instances of a given substring - Wipe()
+##### Convert a char array into a string, since it should go the other way too - IntoString()
 
 ### For Collections
 ##### For IEnumerables, printing contents - Print()

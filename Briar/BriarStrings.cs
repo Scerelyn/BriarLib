@@ -124,5 +124,20 @@ namespace Briar
             string replaced = Regex.Replace(current, toRemove, "");
             return replaced;
         }
+
+        /// <summary>
+        /// Converts a char array into a string, ie: ['h','e','l','l','o'] becomes "hello"
+        /// </summary>
+        /// <param name="cArr">The char array to make into a string</param>
+        /// <returns>A string version of the char array</returns>
+        public static string IntoString(this char[] cArr)
+        {
+            string fromCharArr = "";
+            foreach (char c in cArr)
+            {
+                fromCharArr += c;
+            }
+            return fromCharArr;
+        }
     }
 }
