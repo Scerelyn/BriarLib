@@ -16,3 +16,5 @@ A collection useful of C# extension methods
 ##### Dice rolling - DiceRoll()
 ##### Checking for possibly primality - IsPossiblyPrime()
 ##### Quick Random numbers - Random()
+##### Greatest common denominator between two numbers - GCD()
+##### Factorials of numbers - Factorial()

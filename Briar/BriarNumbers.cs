@@ -81,5 +81,52 @@ namespace Briar
                 return r.Next(num, 0);
             }
         }
+
+        /// <summary>
+        /// Finds the greatest common denominator between the calling int and the parameter int
+        /// </summary>
+        /// <param name="n">The calling int</param>
+        /// <param name="m">The parameter in to find the GCD to</param>
+        /// <returns>The GCD between the calling int and the parameter int</returns>
+        public static int GCD(this int n, int m)
+        {
+            while (n != 0)
+            {
+                int t = n;
+                n = m % n;
+                m = t;
+            }
+            return m;
+        }
+
+        /// <summary>
+        /// Performs the factorial operator on the given long
+        /// May throw an ArithmeticException if the result is found to be overflowing, ie: 26! gives a massive negative number, which is clearly incorrect
+        /// </summary>
+        /// <param name="l">The long to perform the factorial operator on</param>
+        /// <returns>A long result of the factorial operator</returns>
+        public static long Factorial(this long l)
+        {
+            long product = 1;
+            while(l > 0)
+            {
+                product *= l--;
+            }
+            if (product <= 0)
+            {
+                //throw new ArithmeticException("Overflow detected in factorial call"); //the maximum value that can be input with correct results and not overflow is 25
+            }
+            return product;
+        }
+
+        /// <summary>
+        /// Performs the factorial operator on the given long
+        /// </summary>
+        /// <param name="l">The int to perform the factorial operator on</param>
+        /// <returns>A int result of the factorial operator</returns>
+        public static int Factorial(this int l)
+        {
+            return Factorial(l);
+        }
     }
 }
