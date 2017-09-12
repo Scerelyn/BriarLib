@@ -7,6 +7,7 @@ A collection useful of C# extension methods
 ##### Counting vowels and consonants (english) - CountVowels(), CountConsonants
 ##### Remove instances of a given substring - Wipe()
 ##### Convert a char array into a string, since it should go the other way too - IntoString()
+##### Check if a given character or string consists of exclusively characters from the English alphabet - IsAlpha()
 
 ### For Collections
 ##### For IEnumerables, printing contents - Print()

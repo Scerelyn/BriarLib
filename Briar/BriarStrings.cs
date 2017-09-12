@@ -139,5 +139,38 @@ namespace Briar
             }
             return fromCharArr;
         }
+
+        /// <summary>
+        /// Tells if a given string consists of entirely English letters
+        /// </summary>
+        /// <param name="str">The string to check</param>
+        /// <returns>True if all characters are english letters, false if any are not</returns>
+        public static bool IsAlpha(this string str)
+        {
+            //65 - 90, 97 - 122 for alphabet ranges, uppercase and lowercase respectively
+            foreach (char c in str)
+            {
+                if (!c.IsAlpha())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Tells whether or not a given character is alphabetical or not
+        /// </summary>
+        /// <param name="letter">The character to check</param>
+        /// <returns>True if the charater is in the English alphabet, false if it is not</returns>
+        public static bool IsAlpha(this char letter)
+        {
+            int letInt = (int)letter;
+            if ( (letInt >= 65 && letInt <= 90) || (letInt >= 97 && letInt <= 122))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
