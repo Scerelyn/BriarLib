@@ -128,5 +128,26 @@ namespace Briar
         {
             return Factorial(l);
         }
+
+        /// <summary>
+        /// Returns every inverse pair for a given modulus
+        /// </summary>
+        /// <param name="modulus">The modulus to find inverse pairs for</param>
+        /// <returns>A list of int arrays of size 2 containing inverse pairs in respect to the given modulus</returns>
+        public static List<int[]> InversePairs(this int modulus)
+        {
+            List<int[]> inversePairs = new List<int[]>();
+            for (int i = 1; i < modulus; i++)
+            {
+                for (int j = 1; j < modulus; j++)
+                {
+                    if ((i*j) % modulus == 1)
+                    {
+                        inversePairs.Add(new int[] { i, j });
+                    }
+                }
+            }
+            return inversePairs;
+        }
     }
 }

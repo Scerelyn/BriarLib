@@ -19,3 +19,4 @@ A collection useful of C# extension methods
 ##### Quick Random numbers - Random()
 ##### Greatest common denominator between two numbers - GCD()
 ##### Factorials of numbers - Factorial()
+##### Modular inverse pairs for a given modulus - InversePairs()
