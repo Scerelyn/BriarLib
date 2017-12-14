@@ -12,19 +12,24 @@ namespace Briar
         /// <summary>
         /// Performs a caesarian cipher encode on a given string on all alphabetical letters, leaving nonaphabetical characters untouched but present in the resulting string
         /// </summary>
-        /// <param name="stringy">The string to encode</param>
+        /// <param name="toShift">The string to encode</param>
         /// <param name="shift">The amount to shift rightwards, as in a shifts toward b. Shift also loops (ie: 27 is the same as 1)</param>
         /// <returns>A Caesarian cipher encoded string</returns>
-        public static string CaesarShift(this string stringy, int shift)
+        public static string CaesarShift(this string toShift, int shift)
         {
+            if (toShift == null)
+            {
+                throw new NullReferenceException("toShift cannot be null");
+            }
+
             //65 - 90, 97 - 122 for alphabet ranges, uppercase and lowercase respectively
             if (shift < 0)
             {
-                throw new ArgumentException("No negative numbers");
+                throw new ArgumentException("Cannot shift by a negative value");
             }
             string scrabbledEggs = "";
             shift %= 26;
-            foreach (char c in stringy)
+            foreach (char c in toShift)
             {
                 if ((c <= 90 && c >= 65) || (c >= 97 && c <= 122)) //the character is a letter
                 {
@@ -50,12 +55,17 @@ namespace Briar
         /// <summary>
         /// Returns the number of vowels in a string
         /// </summary>
-        /// <param name="stringy">The string to count vowels in</param>
+        /// <param name="toCheck">The string to count vowels in</param>
         /// <returns>The number of not vowels</returns>
-        public static int CountVowels(this string stringy)
+        public static int CountVowels(this string toCheck)
         {
+            if (toCheck == null)
+            {
+                throw new NullReferenceException("toCheck cannot be null");
+            }
+
             int vowelCount = -0;
-            foreach (char c in stringy.ToLower())
+            foreach (char c in toCheck.ToLower())
             {
                 switch (c)
                 {
@@ -74,12 +84,17 @@ namespace Briar
         /// <summary>
         /// Counts the consonants of a given string
         /// </summary>
-        /// <param name="stringy">The string to count on</param>
+        /// <param name="toCheck">The string to count on</param>
         /// <returns>The consonant count</returns>
-        public static int CountConsonants(this string stringy)
+        public static int CountConsonants(this string toCheck)
         {
+            if (toCheck == null)
+            {
+                throw new NullReferenceException("toCheck cannot be null");
+            }
+
             int consonantCount = 0;
-            foreach (char c in stringy.ToLower())
+            foreach (char c in toCheck.ToLower())
             {
                 switch (c)
                 { //couldn't do length - vowelcount because non alphabetical characters exist
@@ -96,11 +111,15 @@ namespace Briar
         /// <summary>
         /// Checks to see if a given string is a palindrome
         /// </summary>
-        /// <param name="stringythingy">The string to check</param>
+        /// <param name="toCheck">The string to check</param>
         /// <returns>True if the string is a palindrome, false if it isn't</returns>
-        public static bool IsPalindrome(this string stringythingy)
+        public static bool IsPalindrome(this string toCheck)
         {
-            char[] noSpacesAndLowerCase = stringythingy.Replace(" ", null).ToLower().ToCharArray();
+            if (toCheck == null)
+            {
+                throw new NullReferenceException("toCheck cannot be null");
+            }
+            char[] noSpacesAndLowerCase = toCheck.Replace(" ", null).ToLower().ToCharArray();
             String almostTheOriginal = new String(noSpacesAndLowerCase);
 
             char[] reversed = noSpacesAndLowerCase.Reverse().ToArray(); //reversed is not a string exclusive method, hence the array oddness
@@ -112,16 +131,21 @@ namespace Briar
         /// <summary>
         /// Wipes all instances of a given substring in a string
         /// </summary>
-        /// <param name="current">The string to wipe from</param>
+        /// <param name="toWipeFrom">The string to wipe from</param>
         /// <param name="toRemove">The substring to remove from the string</param>
         /// <returns>A copy of the string with the given string removed</returns>
-        public static string Wipe(this string current, string toRemove)
+        public static string Wipe(this string toWipeFrom, string toRemove)
         {
             if (toRemove == null)
             {
                 throw new NullReferenceException("toRemove cannot be null");
             }
-            string replaced = Regex.Replace(current, toRemove, "");
+            if (toWipeFrom == null)
+            {
+                throw new NullReferenceException("toWipeFrom cannot be null");
+            }
+
+            string replaced = Regex.Replace(toWipeFrom, toRemove, "");
             return replaced;
         }
 
@@ -132,6 +156,11 @@ namespace Briar
         /// <returns>A string version of the char array</returns>
         public static string IntoString(this char[] cArr)
         {
+            if (cArr == null)
+            {
+                throw new NullReferenceException("character array cArr cannot be null");
+            }
+
             string fromCharArr = "";
             foreach (char c in cArr)
             {
@@ -143,12 +172,17 @@ namespace Briar
         /// <summary>
         /// Tells if a given string consists of entirely English letters
         /// </summary>
-        /// <param name="str">The string to check</param>
+        /// <param name="toCheck">The string to check</param>
         /// <returns>True if all characters are english letters, false if any are not</returns>
-        public static bool IsAlpha(this string str)
+        public static bool IsAlpha(this string toCheck)
         {
+            if (toCheck == null)
+            {
+                throw new NullReferenceException("toCheck cannot be null");
+            }
+
             //65 - 90, 97 - 122 for alphabet ranges, uppercase and lowercase respectively
-            foreach (char c in str)
+            foreach (char c in toCheck)
             {
                 if (!c.IsAlpha())
                 {
